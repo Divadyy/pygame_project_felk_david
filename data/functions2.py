@@ -136,7 +136,7 @@ def process_enemy_moves(game_map, enemies_pos, player_pos, player_health):
 def game_cycle(file):
     game_map = load_from_file(file)
     player_pos = [0, 0]
-    player_health = 10
+    player_health = 8
     enemies_pos = []
     row_num = 0
     for row in game_map:
@@ -166,7 +166,7 @@ def game_cycle(file):
                                 game_map[player_pos[0]][player_pos[1] - 1].health -= 1
                                 if game_map[player_pos[0]][player_pos[1] - 1].health == 0:
                                     game_map[player_pos[0]][player_pos[1] - 1].entity = '0'
-                                    enemies_pos.remove(([player_pos[0]], [player_pos[1] - 1]))
+                                    enemies_pos.remove((player_pos[0], player_pos[1] - 1))
                                     # find N element in enemies_pos with [player_pos[0]],[player_pos[1] - 1]
                                     # enemies_pos.del(N)
                             else:
@@ -175,16 +175,18 @@ def game_cycle(file):
                                 game_map[player_pos[0]][player_pos[1]].health = 0
                                 game_map[player_pos[0]][player_pos[1] - 1].health = player_health
                                 player_pos[1] = player_pos[1] - 1
-                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos, player_pos, player_health)
+
+                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos,
+                                                                                       player_pos, player_health)
                             game_map[player_pos[0]][player_pos[1]].health = player_health
                             render(game_map)
                     case pygame.K_RIGHT:
-                        if player_pos[1] != len(game_map[0]) - 1 and game_map[player_pos[0]][player_pos[1] + 1] != 'w':
-                            if game_map[player_pos[0]][player_pos[1] + 1] == 'e':
+                        if player_pos[1] != len(game_map[0]) - 1 and game_map[player_pos[0]][player_pos[1] + 1].structure != 'w':
+                            if game_map[player_pos[0]][player_pos[1] + 1].entity == 'e':
                                 game_map[player_pos[0]][player_pos[1] + 1].health -= 1
                                 if game_map[player_pos[0]][player_pos[1] + 1].health == 0:
                                     game_map[player_pos[0]][player_pos[1] + 1].entity = '0'
-                                    enemies_pos.remove(([player_pos[0]], [player_pos[1] + 1]))
+                                    enemies_pos.remove((player_pos[0], player_pos[1] + 1))
                                     # find N element in enemies_pos with [player_pos[0]],[player_pos[1] + 1]
                                     # enemies_pos.del(N)
                             else:
@@ -193,16 +195,18 @@ def game_cycle(file):
                                 game_map[player_pos[0]][player_pos[1]].health = 0
                                 game_map[player_pos[0]][player_pos[1] + 1].health = player_health
                                 player_pos[1] = player_pos[1] + 1
-                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos, player_pos, player_health)
+
+                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos,
+                                                                                       player_pos, player_health)
                             game_map[player_pos[0]][player_pos[1]].health = player_health
                             render(game_map)
                     case pygame.K_UP:
-                        if player_pos[0] != 0 and game_map[player_pos[0] - 1][player_pos[1]] != 'w':
-                            if game_map[player_pos[0] - 1][player_pos[1]] == 'e':
+                        if player_pos[0] != 0 and game_map[player_pos[0] - 1][player_pos[1]].structure != 'w':
+                            if game_map[player_pos[0] - 1][player_pos[1]].entity == 'e':
                                 game_map[player_pos[0] - 1][player_pos[1]].health -= 1
                                 if game_map[player_pos[0] - 1][player_pos[1]].health == 0:
                                     game_map[player_pos[0] - 1][player_pos[1]].entity = '0'
-                                    enemies_pos.remove(([player_pos[0] - 1], [player_pos[1]]))
+                                    enemies_pos.remove((player_pos[0] - 1, player_pos[1]))
                                     # find N element in enemies_pos with [player_pos[0] - 1],[player_pos[1]]
                                     # enemies_pos.del(N)
                             else:
@@ -211,16 +215,18 @@ def game_cycle(file):
                                 game_map[player_pos[0]][player_pos[1]].health = 0
                                 game_map[player_pos[0] - 1][player_pos[1]].health = player_health
                                 player_pos[0] = player_pos[0] - 1
-                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos, player_pos, player_health)
+
+                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos,
+                                                                                       player_pos, player_health)
                             game_map[player_pos[0]][player_pos[1]].health = player_health
                             render(game_map)
                     case pygame.K_DOWN:
-                        if player_pos[0] != len(game_map) - 1 and game_map[player_pos[0] + 1][player_pos[1]] != 'w':
-                            if game_map[player_pos[0] + 1][player_pos[1]] == 'e':
+                        if player_pos[0] != len(game_map) - 1 and game_map[player_pos[0] + 1][player_pos[1]].structure != 'w':
+                            if game_map[player_pos[0] + 1][player_pos[1]].entity == 'e':
                                 game_map[player_pos[0] + 1][player_pos[1]].health -= 1
                                 if game_map[player_pos[0] + 1][player_pos[1]].health == 0:
                                     game_map[player_pos[0] + 1][player_pos[1]].entity = '0'
-                                    enemies_pos.remove(([player_pos[0] + 1], [player_pos[1]]))
+                                    enemies_pos.remove((player_pos[0] + 1, player_pos[1]))
                                     # find N element in enemies_pos with [player_pos[0] + 1],[player_pos[1]]
                                     # enemies_pos.del(N)
                             else:
@@ -229,7 +235,9 @@ def game_cycle(file):
                                 game_map[player_pos[0]][player_pos[1]].health = 0
                                 game_map[player_pos[0] + 1][player_pos[1]].health = player_health
                                 player_pos[0] = player_pos[0] + 1
-                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos, player_pos, player_health)
+
+                            game_map, enemies_pos, player_health = process_enemy_moves(game_map, enemies_pos,
+                                                                                       player_pos, player_health)
                             game_map[player_pos[0]][player_pos[1]].health = player_health
                             render(game_map)
 
