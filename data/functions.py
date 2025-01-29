@@ -36,13 +36,13 @@ def generate_level(level):
 def load_level(filename):
     with open(filename, 'r') as mapFile:
         level_map = [line.strip() for line in mapFile]
+        print(level_map)
     max_width = max(map(len, level_map))
     return list(map(lambda x: x.ljust(max_width, '.'), level_map))
 
 
 def game_cycle(difficulty):
     screen = pygame.display.set_mode((1920, 1080))
-    print(difficulty)
     player, x, y = generate_level(load_level(LEVELS_LIST[difficulty]))
     camera = Camera()
     running = True

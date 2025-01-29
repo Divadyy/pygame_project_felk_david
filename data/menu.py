@@ -1,7 +1,7 @@
 import pygame
 import sys
 from data.button import Button
-from data.functions import game_cycle
+from data.functions2 import game_cycle
 
 pygame.init()
 
