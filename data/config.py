@@ -17,14 +17,17 @@ STEP = 64
 TILES_IMAGES = {'w': pygame.image.load('textures/wall.png'),
                 'f': pygame.image.load('textures/floor.png'),
                 'v': pygame.image.load('textures/void.png'),
-                'i': pygame.image.load('textures/door_cl.png'),
+                'd': pygame.image.load('textures/door_cl.png'),
                 'j': pygame.image.load('textures/door_op.png'),
-                'd': pygame.image.load('textures/door_bs.png'),
+                'b': pygame.image.load('textures/door_bs.png'),
                 'g': pygame.image.load('textures/entrance.png'),
                 'e': pygame.image.load('textures/exit.png'),
-                'p': pygame.image.load('textures/player.png')}
+                'p': pygame.image.load('textures/player.png'),
+                'h': pygame.image.load('textures/health.png'),
+                's': pygame.image.load('textures/attack.png'),
+                'a': pygame.image.load('textures/defense.png')}
 
-FONT = pygame.font.Font(None, 8)
+FONT = pygame.font.Font(None, 16)
 
 screen = pygame.display.set_mode(SIZE)
 clock = pygame.time.Clock()
