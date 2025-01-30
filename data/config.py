@@ -27,7 +27,8 @@ TILES_IMAGES = {'w': pygame.image.load('textures/wall.png'),
                 's': pygame.image.load('textures/attack.png'),
                 'a': pygame.image.load('textures/defense.png')}
 
-FONT = pygame.font.Font(None, 16)
+FONT1 = pygame.font.Font(None, 22)
+FONT2 = pygame.font.Font(None, 50)
 
 screen = pygame.display.set_mode(SIZE)
 clock = pygame.time.Clock()
