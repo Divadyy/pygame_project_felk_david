@@ -20,4 +20,3 @@ class Tile:
         self.structure = structure
         self.character = character
         self.item = item
-23
