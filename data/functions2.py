@@ -8,9 +8,6 @@ from button import Button
 from data.menu import *
 from classes import *
 
-map_static = [[]]
-map_dynamic = [[]]
-
 
 def load_from_file(file):
     game_map = []
@@ -383,4 +380,3 @@ def game_cycle(file, tiles_images, tile_width, tile_height):
 
 if __name__ == '__main__':
     game_cycle(LEVEL_FILE[0])
-5
